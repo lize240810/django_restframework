@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import sys
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # import ipdb; ipdb.set_trace()
@@ -141,16 +140,23 @@ STATICFILES_DIRS = [
 
 # 设置全局
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": ['API.utils.auth.Authentications',], # 里面写认证的类的路径
-    "DEFAULT_PERMISSION_CLASSES": ['API.utils.permission.SVIPpermission'], # 权限
+    # "DEFAULT_AUTHENTICATION_CLASSES": ['API.utils.auth.Authentications',], # 里面写认证的类的路径
+    # "DEFAULT_PERMISSION_CLASSES": ['API.utils.permission.SVIPpermission'], # 权限
     # "DEFAULT_THROTTLE_CLASSES":['API.utils.throttle.VisitThrottle'], # 节流配置
-    "DEFAULT_THROTTLE_RATES":{ # 设置默认访问频率
-        "LIZE": '3/m', # 没有登录用户 匿名用户访问3次
-        "LIZEUser": '10/m' # 登录用户可以访问10次
-    },
+    # "DEFAULT_THROTTLE_RATES":{ # 设置默认访问频率
+    #    "LIZE": '3/m', # 没有登录用户 匿名用户访问3次
+    #    "LIZEUser": '10/m' # 登录用户可以访问10次
+    # },
     # "DEFAULT_VERSION": 'v1', # 默认版本
     # "ALLOWED_VERSION": ["v1", "v2"], # 允许的版本
     # "version_param": 'version' # GET方式url中参数的名字
     # 配置全局版本
     "DEFAULT_VERSIONING_CLASS": 'rest_framework.versioning.URLPathVersioning',
+    # 解析器
+    "DEFAULT_PARSER_CLASSES": ["rest_framework.parsers.JSONParser", "rest_framework.parsers.FormParser"],
+    "PAGE_SIZE":2 #每页显示多少个
 }
+
+
+
+## 教程网站 https://www.cnblogs.com/derek1184405959/p/8727595.html

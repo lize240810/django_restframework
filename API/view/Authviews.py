@@ -39,8 +39,6 @@ class AuthView(APIView):
 
 	authentication_classes = [] # 里面为空代表不需要认证
 	permission_classes = [] # 里面为空，代表不需要权限
-	# 默认的节流是登录用户 (10/m) ，
-	throttle_classes = [VisitThrottle,] # 局部配置，（不适用settings 中的全局配置的时候）
 	def post(self, request, *args, **kwargs):
 		ret = {'code': 1000, 'msg': None}
 		try:

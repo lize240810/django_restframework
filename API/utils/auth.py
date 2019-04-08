@@ -27,6 +27,7 @@ class Authentications(BaseAuthentication):
 		# 查询数据库查看是否存在
 		token_obj = UserToken.objects.filter(token=token).first()
 		if not token_obj:
+			# 如果token不存在则抛出错误提示
 			raise exceptions.AuthenticationFailed("用户认证失败")
 		return (token_obj.user,token_obj)
 	

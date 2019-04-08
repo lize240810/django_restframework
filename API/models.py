@@ -12,6 +12,8 @@ class UserInfo(models.Model):
 	user_type = models.IntegerField("用户类型", choices=USER_TYPE, default=1)
 	username = models.CharField("用户名", max_length=32)
 	password = models.CharField("用户密码", max_length=64)
+	group = models.ForeignKey("UserGroup", on_delete=models.CASCADE)
+	roles = models.ManyToManyField("Role")
 
 class UserToken(models.Model):
 	"""用户身份信息"""
